@@ -1,9 +1,18 @@
-FROM maven:3.8.3-openjdk-17
-LABEL maintainer="Mayur Wagh <mwagh1412@gmail.com>"
-COPY . /opt/ 
-WORKDIR /opt 
-RUN mvn clean package 
-WORKDIR target/ 
+FROM maven:3.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:17-jre
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
-ENTRYPOINT [ "java" , "-jar"] 
-CMD [ "student-registration-backend-0.0.1-SNAPSHOT.jar" ]
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
