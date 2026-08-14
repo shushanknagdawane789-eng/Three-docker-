@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchUsers, registerUser, deleteUser } from "./userService";
 
-export const useRegistrationForm = () => {
+const useRegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [course, setCourse] = useState("");
@@ -97,3 +97,5 @@ export const useRegistrationForm = () => {
     limitedUsers,
   };
 };
+export default
+useRegistrationForm
