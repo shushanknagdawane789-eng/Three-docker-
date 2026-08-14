@@ -1,5 +1,5 @@
 import React from "react";
-import { useRegistrationForm } from "../hooks/useRegistrationForm";
+import { useRegistrationForm } from "../useRegistrationForm";
 import "./RegistrationForm.css";
 import Modal from "./Modal";
 
