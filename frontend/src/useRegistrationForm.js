@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchUsers, registerUser, deleteUser } from "../api/userService";
+import { fetchUsers, registerUser, deleteUser } from "./userService";
 
 export const useRegistrationForm = () => {
   const [name, setName] = useState("");
